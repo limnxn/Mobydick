@@ -1,0 +1,12 @@
+# Hidden files
+.DS_Store
+
+# Unwanted files
+*.crt
+*.csr
+*.key
+subjectaltname.txt
+
+# Unwanted folders
+html/*
+!html/webpack.mix.js

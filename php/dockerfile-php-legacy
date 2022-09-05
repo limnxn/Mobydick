@@ -1,0 +1,32 @@
+FROM php:7.1-apache
+
+RUN apt-get update && apt-get install -y \
+apache2 \
+bash \
+curl \
+imagemagick \
+libmagickwand-dev \
+libgif-dev \
+libjpeg-dev \
+libpng-dev \
+libzip-dev \
+openssl \
+ssl-cert \
+vim \
+zip \
+unzip \
+&& docker-php-ext-install \
+exif \
+gd \
+mbstring \
+mysqli \
+pdo \
+pdo_mysql \
+&& pecl install imagick \
+&& docker-php-ext-enable imagick \
+&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+COPY ./php.ini $PHP_INI_DIR/php.ini
+COPY ./ssl-legacy.conf /etc/apache2/sites-available/ssl.conf
+
+RUN a2enmod ssl && a2enmod rewrite && a2ensite ssl

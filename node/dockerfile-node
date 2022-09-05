@@ -1,0 +1,7 @@
+FROM node:16.14.2
+
+WORKDIR /var/www/html
+
+RUN npm install -g agentkeepalive --save
+RUN npm install -g npm@8.5.0
+RUN npm cache clean -f

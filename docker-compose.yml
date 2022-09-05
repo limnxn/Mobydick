@@ -1,0 +1,41 @@
+services:
+  php:
+    container_name: php_mobydick
+    build:
+      context: ./php
+      # dockerfile: dockerfile-php-modern
+      dockerfile: dockerfile-php-legacy
+    volumes:
+      - ./html:/var/www/html
+      - ./php/certs:/tmp/certs
+    ports:
+      - 8080:80
+      - 8443:443
+
+  node:
+    container_name: node_mobydick
+    build:
+      context: ./node
+      dockerfile: dockerfile-node
+    volumes:
+      - ./html:/var/www/html
+    tty: true
+    ports:
+      - 3000:3000
+      - 3001:3001
+
+  mariadb:
+    container_name: mariadb_mobydick
+    build:
+      context: ./mariadb
+      dockerfile: dockerfile-mariadb
+    environment:
+      MYSQL_DATABASE: mobydick
+      MYSQL_USER: test
+      MYSQL_PASSWORD: passw0rd
+      MYSQL_ROOT_PASSWORD: passw0rd
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - ./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - 3306:3306
