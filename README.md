@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this document is to build PHP development environment quickly and easily.
+The purpose of this document is to build a PHP development environment quickly and easily.
 
 ## Prerequisites
 
