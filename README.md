@@ -26,7 +26,7 @@ Load the certificate at [Keychain Access](https://support.apple.com/ja-jp/guide/
 ### Start app containers
 
 ```bash
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 ### Install PHP Frameworks
