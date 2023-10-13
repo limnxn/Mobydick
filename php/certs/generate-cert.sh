@@ -4,7 +4,7 @@
 echo subjectAltName = DNS:dev.example, DNS:localhost, IP:127.0.0.1 > subjectaltname.txt
 # サーバー用の秘密鍵を作成
 openssl genrsa -des3 -passout pass:pass -out localhost.key 2048
-# パスフレーズなしの秘密鍵を生成
+# パスフレーズなしの秘密鍵を作成
 openssl rsa -passin pass:pass -in localhost.key -out localhost.key
 # CAに向けた証明書署名要求を作成
 openssl req -new -sha256 -key localhost.key -out localhost.csr -subj "/C=JP/ST=/L=/O=/OU=/CN=localhost"
